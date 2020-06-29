@@ -54,21 +54,27 @@ class Index extends StatelessWidget {
             padding: EdgeInsets.all(5.0),
             child: Card(
                 child: InkWell(
-                  onTap: () async {
-                    var url = p.urlPdf;
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Cold not lauch $url';
-                    }
-                  },
-              child: Container(      
-                
+              onTap: () async {
+                var url = p.urlPdf;
+                if (await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  throw 'Cold not lauch $url';
+                }
+              },
+              child: Container(
                 child: Column(
                   children: <Widget>[
-                    Text(p.titulo,),
-                    Text(p.descricao)
-                   
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0,13,0,10),
+                      child: Image.network(p.iconUrl),
+                    ),
+                    
+                    Text(
+                      p.titulo,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16.0),
+                    ),
                   ],
                 ),
               ),
@@ -76,49 +82,6 @@ class Index extends StatelessWidget {
           );
         });
   }
-
-  // _listView(List<Pdf> pdfs) {
-  //   return GridView.builder(
-  //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-  //         crossAxisCount: 2,
-  //         crossAxisSpacing: 0.0,
-  //         mainAxisSpacing: 0.0,
-  //       ),
-  //       itemCount: pdfs != null ? pdfs.length : 0,
-  //       itemBuilder: (context, index) {
-  //         Pdf p = pdfs[index];
-
-  //         return Container(
-  //           padding: EdgeInsets.all(5.0),
-  //           child: Card(
-  //             child: Column(
-  //               children: <Widget>[
-  //                 InkWell(
-  //                   onTap: () async {
-  //                     var url = p.urlPdf;
-  //                     if (await canLaunch(url)) {
-  //                       await launch(url);
-  //                     } else {
-  //                       throw 'Cold not lauch $url';
-  //                     }
-  //                   },
-  //                   child: Container(
-  //                     child: Column(
-  //                       children: <Widget>[
-  //                         Row(
-  //                           children: <Widget>[Text(p.titulo)],
-  //                         ),
-  //                         Row(
-  //                           children: <Widget>[Text(p.descricao)],
-  //                         )
-  //                       ],
-  //                     ),
-  //                   ),
-  //                 )
-  //               ],
-  //             ),
-  //           ),
-  //         );
-  //       });
-  // }
 }
+
+//https://br.freepik.com/search?dates=any&format=search&page=1&query=washing%20hands&selection=1&sort=popular&type=icon
